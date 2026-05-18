@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Telebe Dostu — Account Deletion Information</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top left,#1d4ed8 0%,transparent 30%),
+        radial-gradient(circle at bottom right,#0f766e 0%,transparent 30%),
+        linear-gradient(135deg,#050816,#0f172a,#111827);
+      color:white;
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    .blur{
+      position:fixed;
+      width:350px;
+      height:350px;
+      border-radius:50%;
+      filter:blur(120px);
+      opacity:.35;
+      z-index:-1;
+    }
+
+    .blur1{
+      background:#3b82f6;
+      top:-120px;
+      left:-120px;
+    }
+
+    .blur2{
+      background:#14b8a6;
+      bottom:-120px;
+      right:-120px;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:30px 20px 80px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:40px;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:800;
+      background:linear-gradient(to right,#ffffff,#93c5fd,#5eead4);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .lang-btn{
+      border:none;
+      padding:10px 18px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:600;
+      background:rgba(255,255,255,.08);
+      color:white;
+      transition:.3s;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active{
+      background:#2563eb;
+      border-color:#60a5fa;
+    }
+
+    .hero{
+      text-align:center;
+      padding:50px 20px;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:10px 18px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+      color:#93c5fd;
+      margin-bottom:25px;
+      backdrop-filter:blur(10px);
+    }
+
+    h1{
+      font-size:clamp(42px,7vw,74px);
+      font-weight:800;
+      line-height:1.05;
+      margin-bottom:25px;
+      background:linear-gradient(to right,#ffffff,#93c5fd,#5eead4);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero p{
+      max-width:850px;
+      margin:auto;
+      font-size:20px;
+      line-height:1.8;
+      color:#cbd5e1;
+    }
+
+    .card{
+      margin-top:45px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+      backdrop-filter:blur(16px);
+      border-radius:30px;
+      padding:40px;
+      box-shadow:0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .card h2{
+      font-size:30px;
+      margin-bottom:20px;
+    }
+
+    .card p{
+      font-size:17px;
+      line-height:1.9;
+      color:#dbeafe;
+      margin-bottom:18px;
+    }
+
+    .highlight{
+      background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(20,184,166,.12));
+      border:1px solid rgba(147,197,253,.25);
+      padding:24px;
+      border-radius:24px;
+      margin-top:20px;
+    }
+
+    .highlight strong{
+      color:white;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:22px;
+      margin-top:40px;
+    }
+
+    .mini-card{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      padding:28px;
+      transition:.35s;
+    }
+
+    .mini-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(147,197,253,.4);
+    }
+
+    .mini-card h3{
+      font-size:22px;
+      margin-bottom:15px;
+    }
+
+    .mini-card p{
+      color:#cbd5e1;
+      line-height:1.8;
+      font-size:15px;
+    }
+
+    .warning{
+      margin-top:50px;
+      background:rgba(239,68,68,.1);
+      border:1px solid rgba(248,113,113,.3);
+      border-radius:28px;
+      padding:30px;
+    }
+
+    .warning h2{
+      color:#fca5a5;
+      margin-bottom:15px;
+    }
+
+    .warning p{
+      color:#fecaca;
+      line-height:1.9;
+    }
+
+    .footer{
+      margin-top:70px;
+      text-align:center;
+      color:#94a3b8;
+      line-height:1.8;
+      font-size:14px;
+    }
+
+    .footer strong{
+      color:white;
+    }
+
+    @media(max-width:700px){
+
+      .topbar{
+        justify-content:center;
+      }
+
+      .hero{
+        padding-top:20px;
+      }
+
+      .card{
+        padding:28px;
+      }
+
+      .card h2{
+        font-size:25px;
+      }
+
+      .hero p{
+        font-size:17px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="blur blur1"></div>
+  <div class="blur blur2"></div>
+
+  <div class="container">
+
+    <div class="topbar">
+
+      <div class="logo">
+        🎓 Telebe Dostu
+      </div>
+
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLanguage('az', this)">AZ</button>
+        <button class="lang-btn" onclick="setLanguage('en', this)">EN</button>
+        <button class="lang-btn" onclick="setLanguage('ru', this)">RU</button>
+      </div>
+
+    </div>
+
+    <section class="hero">
+
+      <div class="badge" id="badge">
+        🎓 Telebe Dostu • Rəsmi Məlumat Səhifəsi
+      </div>
+
+      <h1 id="title">
+        Hesab Silinməsi<br>
+        Hazırda Mövcud Deyil
+      </h1>
+
+      <p id="heroText">
+        Telebe Dostu tətbiqində hazırda istifadəçilər üçün avtomatik hesab silmə funksiyası mövcud deyil.
+      </p>
+
+    </section>
+
+    <section class="card">
+
+      <h2 id="sectionTitle">
+        📌 Niyə hesab silmə funksiyası yoxdur?
+      </h2>
+
+      <p id="p1">
+        Telebe Dostu tələbələrin akademik həyatını idarə etmək üçün hazırlanmış ağıllı platformadır.
+      </p>
+
+      <p id="p2">
+        Sistem daxilində məlumatlar real-time sinxronizasiya və AI yaddaş texnologiyası ilə işlədiyi üçün hesab silmə funksiyası müvəqqəti olaraq deaktiv edilmişdir.
+      </p>
+
+      <div class="highlight">
+        <p id="highlightText">
+          <strong>Vacib:</strong> İstifadəçi məlumatları üçüncü tərəflərə satılmır və paylaşılmır.
+        </p>
+      </div>
+
+    </section>
+
+    <div class="grid">
+
+      <div class="mini-card">
+        <h3 id="c1t">🔒 Təhlükəsizlik</h3>
+        <p id="c1d">
+          İstifadəçi məlumatları təhlükəsiz şəkildə qorunur.
+        </p>
+      </div>
+
+      <div class="mini-card">
+        <h3 id="c2t">☁️ Cloud Sync</h3>
+        <p id="c2d">
+          Bütün məlumatlar cihazlar arasında sinxronlaşdırılır.
+        </p>
+      </div>
+
+      <div class="mini-card">
+        <h3 id="c3t">🤖 AI Sistemi</h3>
+        <p id="c3d">
+          Ləman AI fərdiləşdirilmiş istifadəçi təcrübəsi təqdim edir.
+        </p>
+      </div>
+
+    </div>
+
+    <section class="warning">
+
+      <h2 id="warningTitle">
+        ⚠️ Gələcək Yeniləmələr
+      </h2>
+
+      <p id="warningText">
+        Gələcək versiyalarda hesab silmə funksiyası əlavə ediləcəkdir.
+      </p>
+
+    </section>
+
+    <div class="footer">
+
+      <p id="footer1">
+        <strong>Telebe Dostu</strong> — Azərbaycan tələbələri üçün ağıllı akademik platforma.
+      </p>
+
+      <p id="footer2">
+        © 2026 Telebe Dostu. Bütün hüquqlar qorunur.
+      </p>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const translations = {
+
+      az: {
+
+        badge:"🎓 Telebe Dostu • Rəsmi Məlumat Səhifəsi",
+
+        title:"Hesab Silinməsi<br>Hazırda Mövcud Deyil",
+
+        heroText:"Telebe Dostu tətbiqində hazırda istifadəçilər üçün avtomatik hesab silmə funksiyası mövcud deyil.",
+
+        sectionTitle:"📌 Niyə hesab silmə funksiyası yoxdur?",
+
+        p1:"Telebe Dostu tələbələrin akademik həyatını idarə etmək üçün hazırlanmış ağıllı platformadır.",
+
+        p2:"Sistem daxilində məlumatlar real-time sinxronizasiya və AI yaddaş texnologiyası ilə işlədiyi üçün hesab silmə funksiyası müvəqqəti olaraq deaktiv edilmişdir.",
+
+        highlightText:"<strong>Vacib:</strong> İstifadəçi məlumatları üçüncü tərəflərə satılmır və paylaşılmır.",
+
+        c1t:"🔒 Təhlükəsizlik",
+        c1d:"İstifadəçi məlumatları təhlükəsiz şəkildə qorunur.",
+
+        c2t:"☁️ Cloud Sync",
+        c2d:"Bütün məlumatlar cihazlar arasında sinxronlaşdırılır.",
+
+        c3t:"🤖 AI Sistemi",
+        c3d:"Ləman AI fərdiləşdirilmiş istifadəçi təcrübəsi təqdim edir.",
+
+       
+
+        footer1:"<strong>Telebe Dostu</strong> — Azərbaycan tələbələri üçün ağıllı akademik platforma.",
+
+        footer2:"© 2026 Telebe Dostu. Bütün hüquqlar qorunur."
+      },
+
+      en: {
+
+        badge:"🎓 Telebe Dostu • Official Information Page",
+
+        title:"Account Deletion<br>Currently Unavailable",
+
+        heroText:"Telebe Dostu currently does not provide an automatic account deletion feature for users.",
+
+        sectionTitle:"📌 Why is account deletion unavailable?",
+
+        p1:"Telebe Dostu is an intelligent platform designed to simplify academic life for students.",
+
+        p2:"Because the system relies on real-time synchronization and AI memory technologies, the account deletion feature is temporarily disabled.",
+
+        highlightText:"<strong>Important:</strong> User data is never sold or shared with third parties.",
+
+        c1t:"🔒 Security",
+        c1d:"User information is securely protected.",
+
+        c2t:"☁️ Cloud Sync",
+        c2d:"All data is synchronized across devices.",
+
+        c3t:"🤖 AI System",
+        c3d:"Ləman AI provides a personalized user experience.",
+
+     
+
+        footer1:"<strong>Telebe Dostu</strong> — Smart academic platform for students.",
+
+        footer2:"© 2026 Telebe Dostu. All rights reserved."
+      },
+
+      ru: {
+
+        badge:"🎓 Telebe Dostu • Официальная информационная страница",
+
+        title:"Удаление аккаунта<br>Временно недоступно",
+
+        heroText:"В приложении Telebe Dostu в настоящее время отсутствует функция автоматического удаления аккаунта.",
+
+        sectionTitle:"📌 Почему функция удаления недоступна?",
+
+        p1:"Telebe Dostu — интеллектуальная платформа для упрощения студенческой жизни.",
+
+        p2:"Из-за использования real-time синхронизации и AI-памяти функция удаления аккаунта временно отключена.",
+
+        highlightText:"<strong>Важно:</strong> Данные пользователей не продаются и не передаются третьим лицам.",
+
+        c1t:"🔒 Безопасность",
+        c1d:"Данные пользователей надежно защищены.",
+
+        c2t:"☁️ Cloud Sync",
+        c2d:"Все данные синхронизируются между устройствами.",
+
+        c3t:"🤖 AI Система",
+        c3d:"Ləman AI обеспечивает персонализированный опыт.",
+
+
+
+        footer1:"<strong>Telebe Dostu</strong> — умная академическая платформа для студентов.",
+
+        footer2:"© 2026 Telebe Dostu. Все права защищены."
+      }
+
+    };
+
+    function setLanguage(lang, btn){
+
+      document.querySelectorAll(".lang-btn").forEach(b=>{
+        b.classList.remove("active");
+      });
+
+      btn.classList.add("active");
+
+      const data = translations[lang];
+
+      document.getElementById("badge").innerHTML = data.badge;
+      document.getElementById("title").innerHTML = data.title;
+      document.getElementById("heroText").innerHTML = data.heroText;
+      document.getElementById("sectionTitle").innerHTML = data.sectionTitle;
+      document.getElementById("p1").innerHTML = data.p1;
+      document.getElementById("p2").innerHTML = data.p2;
+      document.getElementById("highlightText").innerHTML = data.highlightText;
+
+      document.getElementById("c1t").innerHTML = data.c1t;
+      document.getElementById("c1d").innerHTML = data.c1d;
+
+      document.getElementById("c2t").innerHTML = data.c2t;
+      document.getElementById("c2d").innerHTML = data.c2d;
+
+      document.getElementById("c3t").innerHTML = data.c3t;
+      document.getElementById("c3d").innerHTML = data.c3d;
+
+      document.getElementById("warningTitle").innerHTML = data.warningTitle;
+      document.getElementById("warningText").innerHTML = data.warningText;
+
+      document.getElementById("footer1").innerHTML = data.footer1;
+      document.getElementById("footer2").innerHTML = data.footer2;
+    }
+
+  </script>
+
+</body>
+</html>
